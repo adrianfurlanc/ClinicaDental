@@ -2,11 +2,11 @@ const express = require('express');
 const db = require('./config/mongoose.js');
 const app = express();
 const port = 3000;
-// const router = require('./router');
+const router = require('./router');
 
 // Middleware
 app.use(express.json());
-// app.use(router);
+app.use(router);
 
 
 //Connecting to the database
