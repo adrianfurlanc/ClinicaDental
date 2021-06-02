@@ -27,6 +27,17 @@ router.get('/', async (req,res) => {
     }
 })
 
+router.get('/specialty', async (req, res) => {
+    try {
+        const specialty = req.body.specialty;
+        res.json(await dentistController.findDentistBySpecialty(specialty));
+    }catch (err) {
+        return res.status(500).json({
+            message: err.message
+        });
+    }
+});
+
 
 // DELETE - Fires a new dentist
 router.delete('/', async (req, res) => {

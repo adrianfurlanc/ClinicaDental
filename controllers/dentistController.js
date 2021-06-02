@@ -15,6 +15,11 @@ class Doctor {
         return Dentist.find();
     }
 
+    async findDentistBySpecialty(specialty) {
+        const dentist = await Dentist.findOne({specialty})
+        return dentist;
+    }
+
 }
 
 let dentistController = new Doctor();
