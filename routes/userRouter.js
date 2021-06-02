@@ -13,12 +13,10 @@ router.get('/', async (req, res) => {
 });
 
 
-//POST - Creates a new user
-
+// POST - Creates a new user
 router.post('/', async (req,res) => {
     try {
         const user = req.body;
-        console.log(user);
         res.json(await userController.createUser(user))
     }catch (err) {
         return res.status(500).json({
@@ -27,7 +25,7 @@ router.post('/', async (req,res) => {
     }
 })
 
-
+// POST - Login a user
 router.post('/login', async (req,res) => {
     try {
         const {email,password} = req.body;

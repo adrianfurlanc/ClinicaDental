@@ -26,9 +26,9 @@ class Cliente {
         return ({token, user});
     }
 
-    // async findAllUsers(){
-    //     return User.find();
-    // }
+    async findAllUsers(){
+        return User.find();
+    }
 
     async createUser(user){
         user.password = await bcrypt.hash(user.password, 10);

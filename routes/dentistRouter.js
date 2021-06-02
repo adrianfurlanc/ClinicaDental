@@ -16,6 +16,18 @@ router.post('/', async (req,res) => {
     }
 })
 
+// GET - List all available dentists
+router.get('/', async (req,res) => {
+    try {
+        res.json(await dentistController.listAllDentists())
+    }catch (err) {
+        return res.status(500).json({
+            message: err.message
+        })
+    }
+})
+
+
 // DELETE - Fires a new dentist
 router.delete('/', async (req, res) => {
     try{

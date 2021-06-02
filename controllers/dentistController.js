@@ -11,6 +11,10 @@ class Doctor {
         return Dentist.findByIdAndRemove(id);
     }
 
+    async listAllDentists() {
+        return Dentist.find();
+    }
+
 }
 
 let dentistController = new Doctor();
