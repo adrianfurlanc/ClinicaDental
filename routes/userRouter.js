@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const userController = require('../controllers/userController');
+const admin = require("../middlewares/adminUser");
 
 // GET - Return all users
 router.get('/', async (req, res) => {
