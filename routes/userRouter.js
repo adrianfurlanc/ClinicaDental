@@ -28,5 +28,18 @@ router.post('/', async (req,res) => {
 })
 
 
+router.post('/login', async (req,res) => {
+    try {
+        const {email,password} = req.body;
+        const jwt = await userController.logMe(email,password);
+        const token = jwt.token;
+        const user = jwt.user;
+        res.json({token,user});
+    }catch (err) {
+        return res.status(401).json({
+            message: err.message
+        })
+    }
+})
 
 module.exports = router;
