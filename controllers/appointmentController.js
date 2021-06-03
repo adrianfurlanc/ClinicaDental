@@ -22,7 +22,7 @@ class Visit {
     //Add doctor to appointment --> async
 
     async eliminateAppointment(bodyData){
-        return Appointment.destroy({where: {id: bodyData.id}})
+        return Appointment.findByIdAndRemove(bodyData)
     }
 
     

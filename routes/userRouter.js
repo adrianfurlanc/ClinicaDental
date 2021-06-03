@@ -41,4 +41,15 @@ router.post('/login', async (req,res) => {
     }
 })
 
+router.put('/', async (req,res) => {
+    try {
+        const data = req.body;
+        res.json(await userController.modifyUser(data));
+    } catch (err) {
+        return res.status(500).json({
+        message: err.message
+    });
+}
+});
+
 module.exports = router;

@@ -45,6 +45,7 @@ router.post('/', async (req,res) => {
 router.delete('/deleteappointment', async (req, res) => {
     try {
         const bodyData = req.body;
+        console.log(bodyData);
         res.json(await appointmentController.eliminateAppointment(bodyData))
     }catch (err) {
         return res.status(500).json({
