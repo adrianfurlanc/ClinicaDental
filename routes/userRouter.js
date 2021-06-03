@@ -3,7 +3,7 @@ const userController = require('../controllers/userController');
 const admin = require("../middlewares/adminUser");
 
 // GET - Return all users
-router.get('/', async (req, res) => {
+router.get('/', admin, async (req, res) => {
     try {
         res.json(await userController.findAllUsers())
     }catch (err) {
