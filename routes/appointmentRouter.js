@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
             message: err.message
         });
     }
-});
+})
 
 // POST - Creates a new appointment in the db
 
@@ -27,18 +27,40 @@ router.post('/', async (req,res) => {
     }
 })
 
-// POST - Add a doctor to the appointment
+// POST - Request the pending appointments for the User
 
-// router.post('/join', async (req,res) => {
-//     try {
-//         const data = req.body
-//         res.json(await appointmentController.joinAppointment(data));
-//     }catch (err) {
-//         return res.status(500).json({
-//             message: err.message
-//         })
-//     }
-// })
+router.get('/pending', async (req,res) => {
+    try{
+        res.json(await appointmentController.findActiveAppointments())
+    }catch (err) {
+        return res.status(500).json({
+            message: err.message
+        });
+    }
+})
+
+router.get('/past', async (req,res) => {
+    try{
+        res.json(await appointmentController.findNoActiveAppointments())
+    }catch (err) {
+        return res.status(500).json({
+            message: err.message
+        });
+    }
+})
+
+// UPDATE - Modify appointment isActive status
+
+router.put('/modifyapp', async (req,res) => {
+    try {
+        const data = req.body;
+        res.json(await appointmentController.modifyAppointment(data))
+    }catch (err) {
+        return res.status(500).json({
+            message: err.message
+        })
+    }
+})
 
 // DELETE - Eliminate an appointment
 

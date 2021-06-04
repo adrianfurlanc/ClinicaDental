@@ -42,8 +42,11 @@ class Cliente {
             {address: data.address,
             phone: data.phone,
             isActive: data.isActive },{new:true,omitUndefined:true},
-          );
-      
+        );
+    }
+
+    async deleteUser(id) {
+        return User.findByIdAndRemove(id)
     }
 }
 

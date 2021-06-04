@@ -1,12 +1,12 @@
 
 const router = require('express').Router();
 const dentistController = require('../controllers/dentistController');
-// const admin = require("../middlewares/adminUser");
+const admin = require("../middlewares/adminUser");
 
 
 
 //POST - Hires a new dentist
-router.post('/', async (req,res) => {
+router.post('/', admin, async (req,res) => {
     try {
         const dentist = req.body;
         res.json(await dentistController.hireDentist(dentist))
@@ -42,7 +42,7 @@ router.get('/specialty', async (req, res) => {
 
 
 // DELETE - Fires a new dentist
-router.delete('/', async (req, res) => {
+router.delete('/', admin, async (req, res) => {
     try{
         const id = req.body.id;
         res.json(await dentistController.fireDentist(id));
