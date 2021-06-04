@@ -27,9 +27,9 @@ router.post('/', async (req,res) => {
     }
 })
 
-// POST - Request the pending appointments for the User
+// POST - Request the pending appointments 
 
-router.get('/pending', async (req,res) => {
+router.post('/pending', async (req,res) => {
     try{
         res.json(await appointmentController.findActiveAppointments())
     }catch (err) {
@@ -39,7 +39,9 @@ router.get('/pending', async (req,res) => {
     }
 })
 
-router.get('/past', async (req,res) => {
+// POST - Request the past appointments 
+
+router.post('/past', async (req,res) => {
     try{
         res.json(await appointmentController.findNoActiveAppointments())
     }catch (err) {

@@ -43,7 +43,7 @@ router.post('/login', async (req,res) => {
 
 //UPDATE - modifies users address and phone number
 
-router.put('/', admin, async (req,res) => {
+router.put('/modify', admin, async (req,res) => {
     try {
         const data = req.body;
         res.json(await userController.modifyUser(data));
