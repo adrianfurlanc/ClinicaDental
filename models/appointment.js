@@ -21,6 +21,10 @@ const appointmentSchema = new Schema({
     price: {
         type: String,
         required: true
+    },
+    isActive: {
+        type: Boolean,
+        default: true
     }
 });
 
