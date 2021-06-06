@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const appointmentController = require('../controllers/appointmentController');
+const admin = require("../middlewares/adminUser");
 
 
 //GET - Returns all appointments in the db
@@ -41,7 +42,7 @@ router.post('/pending', async (req,res) => {
 
 // POST - Request the past appointments 
 
-router.post('/past', async (req,res) => {
+router.post('/past', admin, async (req,res) => {
     try{
         res.json(await appointmentController.findNoActiveAppointments())
     }catch (err) {
@@ -53,7 +54,7 @@ router.post('/past', async (req,res) => {
 
 // UPDATE - Modify appointment isActive status
 
-router.put('/modifyapp', async (req,res) => {
+router.put('/modifyapp', admin, async (req,res) => {
     try {
         const data = req.body;
         res.json(await appointmentController.modifyAppointment(data))

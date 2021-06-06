@@ -16,7 +16,8 @@ const userSchema = new Schema({
     },
     phone: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     email: {
         type: String,
@@ -39,6 +40,10 @@ const userSchema = new Schema({
     isActive: {
         type: Boolean,
         default: true
+    },
+    date: {
+        type: Date,
+        default: Date.now
     }
 });
 

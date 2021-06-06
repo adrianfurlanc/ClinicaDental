@@ -53,8 +53,6 @@ We have used the Trello tool so we could share the tasks between the members of 
   - DELETE /appointment/delete --> Deletes an appointment from the db.
   <br>
 
---
-
 # Dependencies used for the realisation of the project:
 <br>
 

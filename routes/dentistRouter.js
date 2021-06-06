@@ -1,10 +1,11 @@
 
 const router = require('express').Router();
 const dentistController = require('../controllers/dentistController');
-const admin = require("../middlewares/adminUser");
+const adminUser = require("../middlewares/adminUser");
+const adminDentist = require("../middlewares/adminDentist");
 
 // GET - List all available dentists
-router.get('/', async (req,res) => {
+router.get('/', adminUser, async (req,res) => {
     try {
         res.json(await dentistController.listAllDentists())
     }catch (err) {
@@ -15,7 +16,7 @@ router.get('/', async (req,res) => {
 })
 
 //POST - Hires a new dentist
-router.post('/', admin, async (req,res) => {
+router.post('/', async (req,res) => {
     try {
         const dentist = req.body;
         res.json(await dentistController.hireDentist(dentist))
@@ -40,7 +41,7 @@ router.get('/specialty', async (req, res) => {
 
 
 // DELETE - Fires a dentist
-router.delete('/', admin, async (req, res) => {
+router.delete('/', adminDentist, async (req, res) => {
     try{
         const id = req.body.id;
         res.json(await dentistController.fireDentist(id));

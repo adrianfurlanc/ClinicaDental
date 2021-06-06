@@ -1,9 +1,10 @@
 const router = require('express').Router();
 const userController = require('../controllers/userController');
-const admin = require("../middlewares/adminUser");
+const adminUser = require("../middlewares/adminUser");
+const adminDentist = require("../middlewares/adminDentist");
 
 // GET - Return all users
-router.get('/', admin, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         res.json(await userController.findAllUsers())
     }catch (err) {
@@ -43,7 +44,7 @@ router.post('/login', async (req,res) => {
 
 //UPDATE - modifies users address and phone number
 
-router.put('/modify', admin, async (req,res) => {
+router.put('/modify', adminUser, async (req,res) => {
     try {
         const data = req.body;
         res.json(await userController.modifyUser(data));
@@ -54,7 +55,7 @@ router.put('/modify', admin, async (req,res) => {
     }   
 });
 
-router.delete('/delete', admin, async (req,res) => {
+router.delete('/delete', adminUser, async (req,res) => {
     try {
         const id = req.body.id
         res.json(await userController.deleteUser(id))

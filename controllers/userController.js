@@ -1,7 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const secreta = "esto es lo más fácil";
+const secreta = "Clinica de Adrian y Guillermo";
 
 class Cliente {
 
@@ -38,7 +38,7 @@ class Cliente {
     async modifyUser(data) {
         return User.findByIdAndUpdate(
             {_id: data.id },
-            //Datos que cambiamos
+            //Datos que cambiamos:
             {address: data.address,
             phone: data.phone,
             isActive: data.isActive },{new:true,omitUndefined:true},
