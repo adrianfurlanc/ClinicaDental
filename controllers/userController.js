@@ -21,6 +21,7 @@ class Cliente {
         const payload = {
             userId: user._id,
             tokenCreationDate: new Date,
+            
         }
         const token = jwt.sign(payload, secreta)
         return ({token, user});

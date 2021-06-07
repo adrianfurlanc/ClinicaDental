@@ -16,12 +16,27 @@ router.get('/', adminUser, async (req,res) => {
 })
 
 //POST - Hires a new dentist
-router.post('/', async (req,res) => {
+router.post('/hire', async (req,res) => {
     try {
         const dentist = req.body;
         res.json(await dentistController.hireDentist(dentist))
     }catch (err) {
         return res.status(403).json({
+            message: err.message
+        })
+    }
+})
+
+// POST - Login a dentist
+router.post('/login', async (req,res) => {
+    try {
+        const {email,password} = req.body;
+        const jwt = await dentistController.logMe(email,password);
+        const token = jwt.token;
+        const user = jwt.user;
+        res.json({token,user});
+    }catch (err) {
+        return res.status(401).json({
             message: err.message
         })
     }

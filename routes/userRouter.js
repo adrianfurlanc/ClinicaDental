@@ -3,8 +3,9 @@ const userController = require('../controllers/userController');
 const adminUser = require("../middlewares/adminUser");
 const adminDentist = require("../middlewares/adminDentist");
 
+
 // GET - Return all users
-router.get('/', async (req, res) => {
+router.get('/', adminDentist, async (req, res) => {
     try {
         res.json(await userController.findAllUsers())
     }catch (err) {
@@ -13,7 +14,6 @@ router.get('/', async (req, res) => {
         });
     }
 });
-
 
 // POST - Creates a new user
 router.post('/', async (req,res) => {

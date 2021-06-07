@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const secret = "Clinica de Adrian y Guillermo";
+const secret = "Esta clinica apesta";
 
 const adminDentist = (req, res, next) => {
 
@@ -11,9 +11,8 @@ const adminDentist = (req, res, next) => {
 
         let token = req.headers.authorization.split(' ')[1];
         let auth = jwt.verify(token,secret);
-
-        if(auth.isAdmin == false){
-            console.log(isAdmin);
+        console.log(auth.isDentist);    
+        if(auth.isDentist == false){
             throw new Error("You are not allowed to make that action!");
         }
         return next();
