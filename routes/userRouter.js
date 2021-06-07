@@ -2,6 +2,7 @@ const router = require('express').Router();
 const userController = require('../controllers/userController');
 const adminUser = require("../middlewares/adminUser");
 const adminDentist = require("../middlewares/adminDentist");
+const User = require('../models/user');
 
 
 // GET - Return all users
@@ -17,6 +18,9 @@ router.get('/', adminDentist, async (req, res) => {
 
 // POST - Creates a new user
 router.post('/', async (req,res) => {
+    const emailExist = await User.findOne({email: req.body.email});
+    if(emailExist) return res.status(400).send("Email already exists");
+
     try {
         const user = req.body;
         res.json(await userController.createUser(user))
