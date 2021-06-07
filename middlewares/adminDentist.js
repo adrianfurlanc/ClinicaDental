@@ -1,20 +1,18 @@
-
 const jwt = require('jsonwebtoken');
-const secret = "Clinica de Adrian y Guillermo";
+const secret = "Esta clinica apesta";
 
-const adminUser = (req, res, next) => {
+const adminDentist = (req, res, next) => {
 
     try {
         if(!req.headers.authorization){
             // return new Error("No tienes autorización");
-           throw new Error("You are not authorized!");
+           throw new Error("You are not a dentist!");
         }
 
         let token = req.headers.authorization.split(' ')[1];
         let auth = jwt.verify(token,secret);
-
-        if(auth.isAdmin == false){
-            console.log(isAdmin);
+        console.log(auth.isDentist);    
+        if(auth.isDentist == false){
             throw new Error("You are not allowed to make that action!");
         }
         return next();
@@ -25,4 +23,4 @@ const adminUser = (req, res, next) => {
     }
 }
 
-module.exports = adminUser;
+module.exports = adminDentist;

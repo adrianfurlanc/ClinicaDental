@@ -1,9 +1,12 @@
 const router = require('express').Router();
 const userController = require('../controllers/userController');
-const admin = require("../middlewares/adminUser");
+const adminUser = require("../middlewares/adminUser");
+const adminDentist = require("../middlewares/adminDentist");
+const User = require('../models/user');
+
 
 // GET - Return all users
-router.get('/', admin, async (req, res) => {
+router.get('/', adminDentist, async (req, res) => {
     try {
         res.json(await userController.findAllUsers())
     }catch (err) {
@@ -13,9 +16,11 @@ router.get('/', admin, async (req, res) => {
     }
 });
 
-
 // POST - Creates a new user
 router.post('/', async (req,res) => {
+    const emailExist = await User.findOne({email: req.body.email});
+    if(emailExist) return res.status(400).send("Email already exists");
+
     try {
         const user = req.body;
         res.json(await userController.createUser(user))
@@ -43,7 +48,7 @@ router.post('/login', async (req,res) => {
 
 //UPDATE - modifies users address and phone number
 
-router.put('/modify', admin, async (req,res) => {
+router.put('/modify', adminUser, async (req,res) => {
     try {
         const data = req.body;
         res.json(await userController.modifyUser(data));
@@ -54,7 +59,7 @@ router.put('/modify', admin, async (req,res) => {
     }   
 });
 
-router.delete('/delete', admin, async (req,res) => {
+router.delete('/delete', adminUser, async (req,res) => {
     try {
         const id = req.body.id
         res.json(await userController.deleteUser(id))

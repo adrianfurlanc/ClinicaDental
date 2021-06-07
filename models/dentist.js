@@ -10,10 +10,28 @@ const dentistSchema = new Schema({
         type: String,
         required: true,
     },
+    email: {
+        type: String,
+        required: true,
+        lowercase: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
     specialty: {
         type: String,
         required: true
     },
+    isDentist: {
+        type: Boolean,
+        required: true,
+        default: true
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 const toJSONConfig = {

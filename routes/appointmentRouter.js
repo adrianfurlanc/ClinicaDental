@@ -1,10 +1,11 @@
 const router = require('express').Router();
 const appointmentController = require('../controllers/appointmentController');
-
+const adminDentist = require("../middlewares/adminDentist");
+const adminUser = require("../middlewares/adminUser");
 
 //GET - Returns all appointments in the db
 
-router.get('/', async (req, res) => {
+router.get('/', adminDentist,  async (req, res) => {
     try {
         res.json(await appointmentController.findAllAppointments())
     }catch (err) {
@@ -16,7 +17,7 @@ router.get('/', async (req, res) => {
 
 // POST - Creates a new appointment in the db
 
-router.post('/', async (req,res) => {
+router.post('/', adminUser, async (req,res) => {
     try {
         const appointment = req.body;
         res.json(await appointmentController.createAppointment(appointment))
@@ -29,7 +30,7 @@ router.post('/', async (req,res) => {
 
 // POST - Request the pending appointments 
 
-router.post('/pending', async (req,res) => {
+router.post('/pending', adminDentist, async (req,res) => {
     try{
         res.json(await appointmentController.findActiveAppointments())
     }catch (err) {
@@ -41,7 +42,7 @@ router.post('/pending', async (req,res) => {
 
 // POST - Request the past appointments 
 
-router.post('/past', async (req,res) => {
+router.post('/past', adminDentist, async (req,res) => {
     try{
         res.json(await appointmentController.findNoActiveAppointments())
     }catch (err) {
@@ -53,7 +54,7 @@ router.post('/past', async (req,res) => {
 
 // UPDATE - Modify appointment isActive status
 
-router.put('/modifyapp', async (req,res) => {
+router.put('/modifyapp', adminUser, async (req,res) => {
     try {
         const data = req.body;
         res.json(await appointmentController.modifyAppointment(data))
@@ -66,7 +67,7 @@ router.put('/modifyapp', async (req,res) => {
 
 // DELETE - Eliminate an appointment
 
-router.delete('/deleteappointment', async (req, res) => {
+router.delete('/deleteappointment', adminUser, async (req, res) => {
     try {
         const bodyData = req.body;
         console.log(bodyData);
