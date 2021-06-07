@@ -8,7 +8,7 @@ Challenge nº6 from the Fullstack Developer Bootcamp at <a href="https://geekshu
 
 In this project, we have created as mentionned before, a dental clinic database that allows clients/users to create appointments and register them. These users can also choose the dentist from the collection "dentist" and add it to the collection "appointment". 
 
-# The project is still in construction. 🔧
+# The project. 🔧
 
 ## Phase 1:
 
@@ -24,7 +24,33 @@ We have used the Trello tool so we could share the tasks between the members of 
 
 <img src="img/Trello.png" width=1500>
 
-## Endpoints
+## How to initialize the Project 
+
+The first step is to clone the repository:
+
+### `npm i`
+
+Then, install the project dependencies in your local repository.
+
+### `npm i express mongoose nodemon bcrypt jsonwebtoken cors`
+
+Run the server.
+
+### `npm start`
+
+Once the server is up and running
+
+## `Open Postman`
+
+First, you will need to start Postman.
+
+<a href="https://www.postman.com/"><img src="img/runpostman.png" width="150"></a>
+
+<img src="img/DentalClinic-Postman.png" width="1500">
+
+Finally, enter the endpoints petitions in Postman and send them.
+
+## Endpoints in Postman
 
 - Users
    - GET /user --> Find all users from the dental clinic.
@@ -56,10 +82,10 @@ We have used the Trello tool so we could share the tasks between the members of 
 # Dependencies used for the realisation of the project:
 <br>
 
-<img src="img/express.png" width=100 height=50>
-<img src="img/mongoose.jpeg" width=100 height=50>
-<img src="img/mongodb.png" width=100 height=50>
-<img src="img/nodejs.png" width=100 height=50>
+<img src="img/express.png" width=70 height=50>
+<img src="img/mongoose.jpeg" width=70 height=50>
+<img src="img/mongodb.png" width=70 height=50>
+<img src="img/nodejs.png" width=70 height=50>
 
 <br>
 
