@@ -40,7 +40,7 @@ class Doctor {
     }
 
     async findDentistBySpecialty(specialty) {
-        const dentist = await Dentist.findOne({specialty})
+        const dentist = await Dentist.find({specialty})
         return dentist;
     }
 
