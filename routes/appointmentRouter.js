@@ -19,8 +19,8 @@ router.get('/',  async (req, res) => {
 
 router.get('/myappointments', adminUser, async (req, res) => {
     try {
-        const data = req.body;
-        res.json(await appointmentController.findAppointmentsByUser(data))
+        const iddata = req.body;
+        res.json(await appointmentController.findAppointmentsByUser(iddata))
     } catch (err) {
         return res.status(500).json({
             message: err.message

@@ -8,8 +8,8 @@ class Visit {
         return Appointment.find()
     }
 
-    async findAppointmentsByUser(data){
-        return Appointment.find({usuario: data.usuario})
+    async findAppointmentsByUser(iddata){
+        return Appointment.find({usuario: iddata.usuario})
     }
 
     async createAppointment(appointment){
