@@ -5,10 +5,23 @@ const adminUser = require("../middlewares/adminUser");
 
 //GET - Returns all appointments in the db
 
-router.get('/', adminDentist,  async (req, res) => {
+router.get('/',  async (req, res) => {
     try {
         res.json(await appointmentController.findAllAppointments())
     }catch (err) {
+        return res.status(500).json({
+            message: err.message
+        });
+    }
+})
+
+// GET - Gets all appointments from one user
+
+router.get('/myappointments', adminUser, async (req, res) => {
+    try {
+        const data = req.body;
+        res.json(await appointmentController.findAppointmentsByUser(data))
+    } catch (err) {
         return res.status(500).json({
             message: err.message
         });

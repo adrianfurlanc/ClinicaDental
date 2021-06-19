@@ -32,7 +32,9 @@ class Cliente {
     }
 
     async createUser(user){
+        console.log("ahora estoy en controlador", user)
         user.password = await bcrypt.hash(user.password, 10);
+        console.log("aqiui estamos ahora", user.password)
         return User.create(user);
     }
 

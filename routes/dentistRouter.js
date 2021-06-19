@@ -33,8 +33,8 @@ router.post('/login', async (req,res) => {
         const {email,password} = req.body;
         const jwt = await dentistController.logMe(email,password);
         const token = jwt.token;
-        const user = jwt.user;
-        res.json({token,user});
+        const dentist = jwt.dentist;
+        res.json({token,dentist});
     }catch (err) {
         return res.status(401).json({
             message: err.message

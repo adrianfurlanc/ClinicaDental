@@ -7,11 +7,11 @@ const appointmentSchema = new Schema({
         required: true
     },
     usuario: {
-        type: mongoose.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId, ref:"user",
         required: true
     },
     doctor: {
-        type: mongoose.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId, ref:"dentist",
         required: true,
     },
     treatment: {

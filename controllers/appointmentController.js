@@ -5,7 +5,11 @@ const Dentist = require('../models/dentist');
 class Visit {
 
     async findAllAppointments(){
-        return Appointment.find();
+        return Appointment.find()
+    }
+
+    async findAppointmentsByUser(data){
+        return Appointment.find({usuario: data.usuario})
     }
 
     async createAppointment(appointment){
@@ -35,6 +39,10 @@ class Visit {
     async eliminateAppointment(bodyData){
         return Appointment.findByIdAndRemove(bodyData)
     }
+
+    // async allLessons(){
+    //     return Lesson.find().populate('coaches');
+    // }
 
 }
 

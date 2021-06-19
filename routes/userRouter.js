@@ -6,7 +6,7 @@ const User = require('../models/user');
 
 
 // GET - Return all users
-router.get('/', adminDentist, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         res.json(await userController.findAllUsers())
     }catch (err) {
@@ -18,11 +18,12 @@ router.get('/', adminDentist, async (req, res) => {
 
 // POST - Creates a new user
 router.post('/', async (req,res) => {
-    const emailExist = await User.findOne({email: req.body.email});
-    if(emailExist) return res.status(400).send("Email already exists");
+    // const emailExist = await User.findOne({email: req.body.email});
+    // if(emailExist) return res.status(400).send("Email already exists");
 
     try {
         const user = req.body;
+        console.log("soy user", user)
         res.json(await userController.createUser(user))
     }catch (err) {
         return res.status(500).json({

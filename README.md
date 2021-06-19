@@ -80,14 +80,13 @@ Finally, enter the endpoints petitions in Postman and send them.
   <br>
 
 # Dependencies used for the realisation of the project:
-<br>
 
 <img src="img/express.png" width=70 height=50>
 <img src="img/mongoose.jpeg" width=70 height=50>
 <img src="img/mongodb.png" width=70 height=50>
 <img src="img/nodejs.png" width=70 height=50>
 
-<br>
+
 
 ## Developers ✍️
 
