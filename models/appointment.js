@@ -10,9 +10,13 @@ const appointmentSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId, ref:"user",
         required: true
     },
-    doctor: {
+    doctor: [{
         type: mongoose.Schema.Types.ObjectId, ref:"dentist",
-        required: true,
+        required: false,
+    }],
+    dentist: {
+        type: String,
+        required: true
     },
     treatment: {
         type: String,

@@ -17,9 +17,10 @@ router.get('/',  async (req, res) => {
 
 // GET - Gets all appointments from one user
 
-router.get('/myappointments', adminUser, async (req, res) => {
+router.post('/myappointments', adminUser, async (req, res) => {
     try {
         const iddata = req.body;
+        console.log("esto es el id de data:" + iddata)
         res.json(await appointmentController.findAppointmentsByUser(iddata))
     } catch (err) {
         return res.status(500).json({
